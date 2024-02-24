@@ -1,0 +1,57 @@
+@import '../../style/vars.scss';
+
+.tableWrapper{
+   border-collapse: collapse;
+  background-color: $tablefon;
+  border-spacing: 0;
+  border: 2px solid $edging;
+  margin: 5rem auto;
+  font-size: 1.5rem;
+}
+
+.tableThead{
+  background-color:$fonColor;
+  text-align: left;
+  
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+tbody tr:hover {
+  background-color:$tablehover;
+}
+
+.btn {
+  color: $fontColor;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+  &:hover{
+    box-shadow: 1px 1px 3px #000;
+  }
+}
+
+.saveButton{
+  &:hover{background-color:$btnSaveColor;}
+  background-image: url('../../../public/images/save.svg');
+
+ }
+
+.editButton{
+  &:hover{ background-color: $btnEditColor;}
+  background-image: url('../../../public/images/edit.svg');
+
+}
+.deleteButton{
+  &:hover{background-color: $btnDeleteColor;}
+  background-image: url('../../../public/images/delete.svg');
+}
+.cancelButton{
+  background-image: url('../../../public/images/cancel.svg');
+  &:hover{background-color: #828282;}
+}

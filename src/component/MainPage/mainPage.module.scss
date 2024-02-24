@@ -1,0 +1,23 @@
+.main{
+  flex: 1;  // Это заставляет контент занимать оставшееся пространство между шапкой и футером
+}
+
+.cardImage{
+   width: 90%; 
+    }
+
+.cardWrapper{
+position: relative;
+display: flex;
+align-items: center;
+justify-content: center;
+
+}
+.cardText{
+position: absolute;
+top:50%;
+left:50%;
+transform: translate(-50%, -50%);
+text-align: center;
+width: 500px;
+}

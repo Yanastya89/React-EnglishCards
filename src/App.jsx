@@ -1,14 +1,15 @@
-import Spiner from "./component/Spiner/Spiner";
-import "../src/style/App.css";
+import Header from "./component/Header/Header";
+import style from "./style/index.module.scss";
+import Footer from "./component/Footer/Footer";
+import MainPage from "./component/MainPage/MainPage";
 
 function App() {
   return (
-    <>
-      <h1>
-        Здесь скоро что-то появится
-        <Spiner />
-      </h1>
-    </>
+    <div className={style.maincontainer}>
+      <Header />
+      <MainPage />
+      <Footer />
+    </div>
   );
 }
 

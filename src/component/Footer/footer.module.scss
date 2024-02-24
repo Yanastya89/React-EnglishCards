@@ -1,0 +1,12 @@
+
+@import '../../style/vars.scss';
+
+.footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  margin-top: auto; 
+  background-color: $fonColor;
+  }
