@@ -16,7 +16,7 @@ const CardSlider = () => {
 
   return (
     <Slider {...settings}>
-      {wordsData.words.map((word) => (
+      {wordsData.map((word) => (
         <Card key={word.id} {...word} />
       ))}
     </Slider>
