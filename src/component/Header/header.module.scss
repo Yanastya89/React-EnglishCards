@@ -7,6 +7,10 @@
   align-items: center;
   height: 10vh;
   background-color:$fonColor;
+  position: fixed;
+  width: 900px;
+  z-index: 10;
+
 
 .logo{
    width: 70px; 
@@ -20,10 +24,10 @@
   align-items: center;
   margin: 0 2vw;
 
-
 .search{
 width: 40px; 
 height: 40px;
+margin-left: 100px;
 }
 a {
   text-decoration: none; 

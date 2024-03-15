@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import style from "./table.module.scss";
-
-export default function Table({ stWords, deleteWords }) {
+function Table({ stWords, deleteWords }) {
   const [editMode, setEditMode] = useState(false);
 
   const handleEdit = () => {
@@ -86,3 +85,5 @@ export default function Table({ stWords, deleteWords }) {
     </table>
   );
 }
+
+export default Table;

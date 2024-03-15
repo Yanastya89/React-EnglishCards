@@ -1,13 +1,17 @@
-import React from "react";
 import style from "./header.module.scss";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
     <header className={style.header}>
       <div className={style.logo}>
-        <img src="../../../public/images/logo.svg" alt="Logo" />
+        <Link to="/">
+          <img src="../../../public/images/logo.svg" alt="Logo" />
+        </Link>
       </div>
       <div className={style.nav}>
+        <Link to="/game">Страница с карточками</Link>
+
         <div className={style.search}>
           <img src="../../../public/images/search.svg" alt="Search" />
         </div>
