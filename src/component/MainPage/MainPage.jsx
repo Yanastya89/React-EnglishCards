@@ -1,17 +1,7 @@
-import React, { useState } from "react";
-import wordsData from "../../data/wordlist.json";
 import style from "./mainPage.module.scss";
-import Table from "../Table/Table";
 import CardSlider from "../CardSlider/CardSlider";
 
-export default function MainPage() {
-  const [stWords, setStWords] = useState(wordsData);
-
-  function handleDelete(id) {
-    const newStWords = stWords.filter((item) => item.id !== id);
-    setStWords(newStWords);
-  }
-
+function MainPage() {
   return (
     <main className={style.main}>
       <div className={style.cardWrapper}>
@@ -24,7 +14,8 @@ export default function MainPage() {
           className={style.cardImage}
         />
       </div>
-      <Table stWords={stWords} deleteWords={handleDelete} />
     </main>
   );
 }
+
+export default MainPage;

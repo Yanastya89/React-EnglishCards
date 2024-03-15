@@ -1,0 +1,35 @@
+@import '../../style/vars.scss';
+
+.container {
+  text-align: center;
+  margin-top: 100px;
+
+}
+
+.image {
+  width: 300px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 32px;
+  color: $fontColor;
+}
+
+.text {
+  font-size: 18px;
+  color: $btshadow;
+  margin-bottom: 20px;
+}
+
+.link {
+  font-size: 20px;
+  color: $btnEditColor;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.link:hover {
+  color: $fonColor;
+}
