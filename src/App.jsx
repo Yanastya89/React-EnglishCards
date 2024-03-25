@@ -2,7 +2,7 @@ import Header from "./component/Header/Header";
 import style from "./style/index.module.scss";
 import Footer from "./component/Footer/Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Game, Main, Error, UserPage } from "./Pages";
+import { Game, Main, Error, UserPage } from "./pages";
 
 function App() {
   return (
