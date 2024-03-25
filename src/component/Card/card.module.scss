@@ -17,24 +17,23 @@ h3{
 }
 
 .translateButton{
-  display: inline-block;
+   display: inline-block;
   width: auto;
   padding: 1vh 2vh;
   margin-top: 50px;
-  border: none;
-  border-radius: 2px;
+border: 2px solid transparent;
+  border-radius: 1px;
   box-shadow: 3px 2px 2px $btshadow;
   background-color: $fonColor;
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
   cursor: pointer;
   font-family:$fontTranslate;
-  &:hover {  border: 1px solid $translateColor;}
+  &:hover {  border: 2px solid $translateColor;}
 
   &:active {
     transform: translateY(2px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    
-  }
+      }
 } 
 
 .translate{

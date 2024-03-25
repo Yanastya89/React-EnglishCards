@@ -2,7 +2,7 @@ import style from "./card.module.scss";
 import React, { useState } from "react";
 
 function Card(props) {
-  const { english, transcription, russian } = props;
+  const { english, transcription, russian, id } = props;
 
   const [showTranslate, setShowTranslate] = useState(false);
   const handleTanslate = () => {
