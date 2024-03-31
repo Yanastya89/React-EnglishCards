@@ -1,0 +1,42 @@
+@import '../../style/vars.scss';
+.cardwrapper{
+  display: flex;
+  flex-direction: row;
+justify-content: space-around;
+}
+
+.btn{
+
+ display: inline-block; 
+  height: 4vh;
+  width: 4vh;
+  border-radius: 5vh;
+  margin-top: 15vh; 
+  border: 1px solid transparent;
+  box-shadow: 3px 2px 2px $btshadow;
+  background-color: $fonColor;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-family:$fontTranslate;
+ background-color: $fonColor;
+ &:hover {  border:  solid 1px $translateColor;}
+
+ &:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.count{
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+}
+
+.info{
+  font-family: $fontTranslate;
+}
+
+
+
+
+
