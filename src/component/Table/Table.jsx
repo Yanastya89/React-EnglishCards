@@ -1,14 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./table.module.scss";
+
 function Table({ stWords, deleteWords }) {
   const [editMode, setEditMode] = useState(false);
+  const [editedFields, setEditedFields] = useState({});
+  const [hasEmptyField, setHasEmptyField] = useState(false);
+
+  useEffect(() => {
+    const isEmpty = Object.values(editedFields).some(
+      (val) => typeof val === "string" && val.trim() === ""
+    );
+    setHasEmptyField(isEmpty);
+  }, [editedFields]);
 
   const handleEdit = () => {
     setEditMode(true);
   };
 
+  const validateFields = (fields) => {
+    return Object.values(fields).some(
+      (val) => typeof val === "string" && val.trim() !== ""
+    );
+  };
+
   const handleSave = () => {
-    setEditMode(false);
+    const isValid = validateFields(editedFields);
+    if (isValid) {
+      console.log("Форма сохранена:", editedFields);
+      setEditMode(false);
+    } else {
+      console.log("Произошла ошибка. Заполните все поля перед сохранением.");
+    }
   };
 
   const handleCancel = () => {
@@ -17,6 +39,25 @@ function Table({ stWords, deleteWords }) {
 
   const handleDelete = (id) => {
     deleteWords(id);
+  };
+
+  const handleInputChange = (item, field, value) => {
+    const lowercasedValue = value.toLowerCase();
+    if (/\d/.test(lowercasedValue)) {
+      console.log("Строка не должна содержать цифр");
+      return;
+    }
+    setEditedFields((prevFields) => {
+      const updatedFields = {
+        ...prevFields,
+        [item.id]: { ...prevFields[item.id], [field]: value },
+      };
+      const isEmpty = Object.values(updatedFields).some(
+        (field) => typeof field === "string" && field.trim() === ""
+      );
+      setHasEmptyField(isEmpty);
+      return updatedFields;
+    });
   };
 
   return (
@@ -34,32 +75,83 @@ function Table({ stWords, deleteWords }) {
           <tr key={item.id}>
             <td>
               {editMode ? (
-                <input type="text" value={item.english} />
+                <input
+                  className={`${style.inputField} ${
+                    editedFields[item.id]?.english !== undefined &&
+                    editedFields[item.id].english.trim() === ""
+                      ? style.emptyField
+                      : ""
+                  }`}
+                  type="text"
+                  name="englishInput"
+                  value={
+                    editedFields[item.id]?.english !== undefined
+                      ? editedFields[item.id].english
+                      : item.english
+                  }
+                  onChange={(e) =>
+                    handleInputChange(item, "english", e.target.value)
+                  }
+                />
               ) : (
                 item.english
               )}
             </td>
             <td>
               {editMode ? (
-                <input type="text" value={item.transcription} />
+                <input
+                  className={`${style.inputField} ${
+                    editedFields[item.id]?.transcription !== undefined &&
+                    editedFields[item.id].transcription.trim() === ""
+                      ? style.emptyField
+                      : ""
+                  }`}
+                  type="text"
+                  name="transcriptionInput"
+                  value={
+                    editedFields[item.id]?.transcription !== undefined
+                      ? editedFields[item.id].transcription
+                      : item.transcription
+                  }
+                  onChange={(e) =>
+                    handleInputChange(item, "transcription", e.target.value)
+                  }
+                />
               ) : (
                 item.transcription
               )}
             </td>
             <td>
               {editMode ? (
-                <input type="text" value={item.russian} />
+                <input
+                  className={`${style.inputField} ${
+                    editedFields[item.id]?.russian !== undefined &&
+                    editedFields[item.id].russian.trim() === ""
+                      ? style.emptyField
+                      : ""
+                  }`}
+                  type="text"
+                  name="russianInput"
+                  value={
+                    editedFields[item.id]?.russian !== undefined
+                      ? editedFields[item.id].russian
+                      : item.russian
+                  }
+                  onChange={(e) =>
+                    handleInputChange(item, "russian", e.target.value)
+                  }
+                />
               ) : (
                 item.russian
               )}
             </td>
-
             <td>
               {editMode ? (
                 <>
                   <button
                     className={`${style.saveButton} ${style.btn}`}
                     onClick={handleSave}
+                    disabled={hasEmptyField}
                   ></button>
                   <button
                     className={`${style.cancelButton} ${style.btn}`}

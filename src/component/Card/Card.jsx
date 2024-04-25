@@ -2,16 +2,13 @@ import style from "./card.module.scss";
 import React, { useState, useRef, useEffect } from "react";
 
 function Card(props) {
-  const { english, transcription, russian, countSlide, handleLearned } = props;
+  const { english, transcription, russian, handleLearned } = props;
   const [showTranslate, setShowTranslate] = useState(false);
   const btnElem = useRef(null);
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      btnElem.current.focus();
-    }, 1500);
-    return () => clearTimeout(timeoutId);
-  }, [countSlide]);
+    btnElem.current.focus();
+  }, [english, transcription, russian]); //не соабатывает(
 
   const handleTranslate = () => {
     setShowTranslate(!showTranslate);

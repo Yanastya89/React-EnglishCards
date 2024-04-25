@@ -32,16 +32,26 @@ tbody tr:hover {
   margin-right: 10px;
   background-repeat: no-repeat;
   background-position: center;
+  box-shadow: 1px 1px 1px $btshadow;
+  transition: all 0.3s ease;
   &:hover{
     box-shadow: 1px 1px 3px #000;
   }
+  &:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
 }
 
 .saveButton{
   &:hover{background-color:$btnSaveColor;}
   background-image: url('../../../public/images/save.svg');
-
  }
+ .disabledButton {
+   opacity: 0.5; 
+  cursor: not-allowed; 
+}
+
 
 .editButton{
   &:hover{ background-color: $btnEditColor;}
@@ -55,4 +65,10 @@ tbody tr:hover {
 .cancelButton{
   background-image: url('../../../public/images/cancel.svg');
   &:hover{background-color: #828282;}
+}
+.emptyField{
+  border:2px solid $btnDeleteColor;
+}
+.inputField{
+  &:hover{background-color: #ece1e1;}
 }
