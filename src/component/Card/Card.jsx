@@ -1,14 +1,9 @@
 import style from "./card.module.scss";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
+import TranslateButton from "../TranslateButton/TranslateButton";
 
-function Card(props) {
-  const { english, transcription, russian, handleLearned } = props;
+function Card({ english, transcription, russian, handleLearned }) {
   const [showTranslate, setShowTranslate] = useState(false);
-  const btnElem = useRef(null);
-
-  useEffect(() => {
-    btnElem.current.focus();
-  }, [english, transcription, russian]); //не соабатывает(
 
   const handleTranslate = () => {
     setShowTranslate(!showTranslate);
@@ -18,18 +13,12 @@ function Card(props) {
   return (
     <div className={style.card}>
       <div className={style.cardBody}>
-        <h3> {english}</h3>
+        <h3>{english}</h3>
         <p className={style.transcription}>{transcription}</p>
         {showTranslate ? (
-          <p className={style.translate}> {russian} </p>
+          <p className={style.translate}>{russian}</p>
         ) : (
-          <button
-            ref={btnElem}
-            onClick={handleTranslate}
-            className={style.translateButton}
-          >
-            Показать перевод
-          </button>
+          <TranslateButton onClick={handleTranslate} />
         )}
       </div>
     </div>
