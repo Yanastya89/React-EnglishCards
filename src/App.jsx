@@ -1,25 +1,26 @@
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./component/Header/Header";
-import style from "./style/index.module.scss";
 import Footer from "./component/Footer/Footer";
-import { hashRouter as Router, Routes, Route } from "react-router-dom";
 import { Game, Main, Error, UserPage } from "./pages";
+import style from "./style/index.module.scss";
 
 function App() {
   return (
-    <xRouter>
+    <Router>
       <div className={style.maincontainer}>
         <Header />
         <main>
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/game" element={<Game />} />
-            <Route path="*" element={<Error />} />
             <Route path="/userpage" element={<UserPage />} />
+            <Route path="*" element={<Error />} />
           </Routes>
         </main>
         <Footer />
       </div>
-    </xRouter>
+    </Router>
   );
 }
 
