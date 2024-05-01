@@ -1,5 +1,6 @@
 import style from "./mainPage.module.scss";
 import CardSlider from "../CardSlider/CardSlider";
+import cardImg from "../../images/Card.png";
 
 function MainPage() {
   return (
@@ -8,11 +9,7 @@ function MainPage() {
         <div className={style.cardText}>
           <CardSlider />
         </div>
-        <img
-          src="/src/images/Card.png"
-          alt="Card"
-          className={style.cardImage}
-        />
+        <img src={cardImg} alt="Card" className={style.cardImage} />
       </div>
     </main>
   );
