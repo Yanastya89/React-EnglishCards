@@ -6,14 +6,14 @@ function Header() {
     <header className={style.header}>
       <div className={style.logo}>
         <Link to="/">
-          <img src="../../../public/images/logo.svg" alt="Logo" />
+          <img src="/src/images/logo.svg" alt="Logo" />
         </Link>
       </div>
       <div className={style.nav}>
         <Link to="/game">Страница с карточками</Link>
 
         <div className={style.search}>
-          <img src="../../../public/images/search.svg" alt="Search" />
+          <img src="/src/images/search.svg" alt="Search" />
         </div>
         <a href="#" className={style.logIn} id="login">
           Log&nbsp;In

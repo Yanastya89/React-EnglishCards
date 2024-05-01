@@ -4,11 +4,7 @@ import style from "../ErrorPage/ErrorPage.module.scss";
 function ErrorPage() {
   return (
     <div className={style.container}>
-      <img
-        src="../../../public/images/error.jpg"
-        alt="404 Error"
-        className={style.image}
-      />
+      <img src="src/images/error.jpg" alt="404 Error" className={style.image} />
       <h1 className={style.title}>Страница не найдена</h1>
       <p className={style.text}>
         Извините, запрошенная страница не существует.

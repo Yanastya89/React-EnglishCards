@@ -9,7 +9,7 @@ function MainPage() {
           <CardSlider />
         </div>
         <img
-          src="../../../public/images/Card.png"
+          src="/src/images/Card.png"
           alt="Card"
           className={style.cardImage}
         />

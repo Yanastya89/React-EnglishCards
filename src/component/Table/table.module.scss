@@ -45,7 +45,7 @@ tbody tr:hover {
 
 .saveButton{
   &:hover{background-color:$btnSaveColor;}
-  background-image: url('../../../public/images/save.svg');
+  background-image: url('/src/images/save.svg');
  }
  .disabledButton {
    opacity: 0.5; 
@@ -55,15 +55,15 @@ tbody tr:hover {
 
 .editButton{
   &:hover{ background-color: $btnEditColor;}
-  background-image: url('../../../public/images/edit.svg');
+  background-image: url('/src/images/edit.svg');
 
 }
 .deleteButton{
   &:hover{background-color: $btnDeleteColor;}
-  background-image: url('../../../public/images/delete.svg');
+  background-image: url('/src/images/delete.svg');
 }
 .cancelButton{
-  background-image: url('../../../public/images/cancel.svg');
+  background-image: url('/src/images/cancel.svg');
   &:hover{background-color: #828282;}
 }
 .emptyField{
