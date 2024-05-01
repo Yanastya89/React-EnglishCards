@@ -1,12 +1,12 @@
 import Header from "./component/Header/Header";
 import style from "./style/index.module.scss";
 import Footer from "./component/Footer/Footer";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { hashRouter as Router, Routes, Route } from "react-router-dom";
 import { Game, Main, Error, UserPage } from "./pages";
 
 function App() {
   return (
-    <Router>
+    <xRouter>
       <div className={style.maincontainer}>
         <Header />
         <main>
@@ -19,7 +19,7 @@ function App() {
         </main>
         <Footer />
       </div>
-    </Router>
+    </xRouter>
   );
 }
 
