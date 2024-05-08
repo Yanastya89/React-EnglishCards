@@ -59,7 +59,7 @@ function CardSlider() {
         <Card
           key={currentWord.id}
           countslide={countSlide}
-          {...dataServer}
+          {...currentWord}
           handleLearned={handleLearned}
         />
         <button

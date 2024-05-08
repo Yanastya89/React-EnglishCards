@@ -1,35 +1,22 @@
 import style from "./card.module.scss";
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import TranslateButton from "../TranslateButton/TranslateButton";
-import { MyContext } from "../../Context/MyContext";
-import Spiner from "../Spiner/Spiner";
 
-function Card() {
-  const { dataServer } = useContext(MyContext);
+function Card({ english, transcription, russian, handleLearned }) {
   const [showTranslate, setShowTranslate] = useState(false);
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
 
   const handleTranslate = () => {
     setShowTranslate(!showTranslate);
+    handleLearned();
   };
 
-  const currentWord = dataServer[currentWordIndex];
-
-  if (!currentWord) {
-    return (
-      <div>
-        <p>Data is loading</p>
-        <Spiner />
-      </div>
-    );
-  }
   return (
     <div className={style.card}>
       <div className={style.cardBody}>
-        <h3>{currentWord.english}</h3>
-        <p className={style.transcription}>{currentWord.transcription}</p>
+        <h3 className={style.word}>{english}</h3>
+        <p className={style.transcription}>{transcription}</p>
         {showTranslate ? (
-          <p className={style.translate}>{currentWord.russian}</p>
+          <p className={style.translate}>{russian}</p>
         ) : (
           <TranslateButton onClick={handleTranslate} />
         )}
