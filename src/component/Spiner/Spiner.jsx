@@ -1,9 +1,10 @@
 import { BeatLoader } from "react-spinners";
 import React from "react";
+import style from "./spiner.module.scss";
 
 function Spiner() {
   return (
-    <div>
+    <div >
       <BeatLoader
         color="#000000"
         cssOverride={{}}

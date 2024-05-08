@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { MyContext } from "../../Context/MyContext";
 import style from "./table.module.scss";
 
-function Table({ stWords, deleteWords }) {
+function Table({ deleteWords }) {
+  const { dataServer } = useContext(MyContext);
   const [editMode, setEditMode] = useState(false);
   const [editedFields, setEditedFields] = useState({});
   const [hasEmptyField, setHasEmptyField] = useState(false);
@@ -71,7 +73,7 @@ function Table({ stWords, deleteWords }) {
         </tr>
       </thead>
       <tbody>
-        {stWords.map((item) => (
+        {dataServer.map((item) => (
           <tr key={item.id}>
             <td>
               {editMode ? (
