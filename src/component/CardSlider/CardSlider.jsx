@@ -12,8 +12,6 @@ function CardSlider() {
   const [wordsAlreadyLearned, setWordsAlreadyLearned] = useState({});
 
   function handleLearned() {
-    console.log("Attempting to learn word:", currentWord);
-
     if (!wordsAlreadyLearned[currentWord.id]) {
       setWordsLearned((prevCount) => prevCount + 1);
       setWordsAlreadyLearned((prevLearned) => ({
