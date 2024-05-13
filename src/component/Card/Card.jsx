@@ -13,7 +13,7 @@ function Card({ english, transcription, russian, handleLearned }) {
   return (
     <div className={style.card}>
       <div className={style.cardBody}>
-        <h3>{english}</h3>
+        <h3 className={style.word}>{english}</h3>
         <p className={style.transcription}>{transcription}</p>
         {showTranslate ? (
           <p className={style.translate}>{russian}</p>

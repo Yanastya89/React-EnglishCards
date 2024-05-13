@@ -1,20 +1,22 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { MyContext } from "../../Context/MyContext";
 import Card from "../Card/Card";
-import wordsData from "../../data/wordlist.json";
 import style from "../CardSlider/cardSlider.module.scss";
 
 function CardSlider() {
+  const { dataServer } = useContext(MyContext);
+  const totalSlides = dataServer.length;
   const [countSlide, setCountSlide] = useState(0);
-  const totalSlides = wordsData.length;
+  const currentWord = dataServer[countSlide];
   const [wordsLearned, setWordsLearned] = useState(0);
-  const [wordsAlreadyLearned, setWordsAlreadyLearned] = useState([]);
+  const [wordsAlreadyLearned, setWordsAlreadyLearned] = useState({});
 
   function handleLearned() {
-    if (!wordsAlreadyLearned[wordsData[countSlide].id]) {
+    if (!wordsAlreadyLearned[currentWord.id]) {
       setWordsLearned((prevCount) => prevCount + 1);
       setWordsAlreadyLearned((prevLearned) => ({
         ...prevLearned,
-        [wordsData[countSlide].id]: true,
+        [currentWord.id]: true,
       }));
     }
   }
@@ -53,9 +55,9 @@ function CardSlider() {
           &lt;
         </button>
         <Card
-          key={wordsData[countSlide].id}
+          key={currentWord.id}
           countslide={countSlide}
-          {...wordsData[countSlide]}
+          {...currentWord}
           handleLearned={handleLearned}
         />
         <button
