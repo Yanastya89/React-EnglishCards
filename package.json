@@ -31,14 +31,6 @@
     "gh-pages": "^6.1.1",
     "vite": "^5.1.0"
   },
-  "proxy": {
-    "/search": {
-      "target": "<https://www.google.com>",
-      "changeOrigin": true
-    },
-    "/api": {
-      "target": "<http://itgirlschool.justmakeit.ru>",
-      "changeOrigin": true
-    }
-  }
+  
+  "proxy": "<http://itgirlschool.justmakeit.ru>"
 }

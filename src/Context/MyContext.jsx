@@ -10,7 +10,7 @@ export function MyContextComponent({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function getWordsServer() {
+    async function fetchData() {
       try {
         const wordsServer = await GetWordsService.getWords();
         setDataServer(wordsServer);
@@ -20,7 +20,7 @@ export function MyContextComponent({ children }) {
         setLoading(false);
       }
     }
-    getWordsServer();
+    fetchData();
   }, []);
 
   const addWord = async (newWord) => {
@@ -85,7 +85,8 @@ export function MyContextComponent({ children }) {
       if (!resp.ok) {
         throw new Error(`Failed to update word: ${resp.statusText}`);
       }
-      await fetchDataFromServer();
+      const updatedData = await GetWordsService.getWords();
+      setDataServer(updatedData);
     } catch (error) {
       console.error("Error updating word:", error);
     }

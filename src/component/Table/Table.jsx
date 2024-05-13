@@ -4,7 +4,8 @@ import GetWordsService from "../../Services/GetWordsService";
 import style from "./table.module.scss";
 
 function Table() {
-  const { dataServer, addWord, deleteWord, updateWord } = useContext(MyContext);
+  const { dataServer, setDataServer, addWord, deleteWord, updateWord } =
+    useContext(MyContext);
   const [editMode, setEditMode] = useState(false);
   const [editedFields, setEditedFields] = useState({});
   const [hasEmptyField, setHasEmptyField] = useState(false);
@@ -59,9 +60,9 @@ function Table() {
   const handleUpdateWord = async (id, updatedFields) => {
     try {
       await updateWord(id, updatedFields);
-      await fetchDataFromServer();
+      console.log("Слово успешно обновлено");
     } catch (error) {
-      console.error(`Failed to update word with ID ${id}:`, error);
+      console.error(`Ошибка при обновлении слова с ID ${id}:`, error);
     }
   };
 
@@ -141,12 +142,7 @@ function Table() {
           <th>english</th>
           <th>transcription</th>
           <th>russian</th>
-          <th>
-            {" "}
-            <button onClick={handleAddWord} className={style.addWordButton}>
-              Add word
-            </button>
-          </th>
+          <th> </th>
         </tr>
       </thead>
       <tbody>
@@ -252,6 +248,43 @@ function Table() {
             </td>
           </tr>
         ))}
+        <tr>
+          <td>
+            <input
+              type="text"
+              name="englishInput"
+              value={newWord.english}
+              onChange={(e) =>
+                setNewWord({ ...newWord, english: e.target.value })
+              }
+            />
+          </td>
+          <td>
+            <input
+              type="text"
+              name="transcriptionInput"
+              value={newWord.transcription}
+              onChange={(e) =>
+                setNewWord({ ...newWord, transcription: e.target.value })
+              }
+            />
+          </td>
+          <td>
+            <input
+              type="text"
+              name="russianInput"
+              value={newWord.russian}
+              onChange={(e) =>
+                setNewWord({ ...newWord, russian: e.target.value })
+              }
+            />
+          </td>
+          <td>
+            <button onClick={handleAddWord} className={style.addWordButton}>
+              Add word
+            </button>
+          </td>
+        </tr>
       </tbody>
     </table>
   );

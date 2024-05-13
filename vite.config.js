@@ -5,14 +5,5 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   base:"./",
-  "proxy": {
-    "/search": {
-      "target": "<https://www.google.com>",
-      "changeOrigin": true
-    },
-    "/api": {
-      "target": "<http://itgirlschool.justmakeit.ru>",
-      "changeOrigin": true
-    }
-  }
-})
+    "proxy": "<http://itgirlschool.justmakeit.ru>",
+ })
