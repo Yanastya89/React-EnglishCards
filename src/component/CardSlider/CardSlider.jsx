@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
-import { MyContext } from "../../Context/MyContext";
+import { WordsContext } from "../../Context/WordsContext";
 import Card from "../Card/Card";
 import style from "../CardSlider/cardSlider.module.scss";
 
 function CardSlider() {
-  const { dataServer } = useContext(MyContext);
+  const { dataServer } = useContext(WordsContext);
   const totalSlides = dataServer.length;
   const [countSlide, setCountSlide] = useState(0);
   const currentWord = dataServer[countSlide];

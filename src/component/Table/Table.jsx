@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import { MyContext } from "../../Context/MyContext";
+import { WordsContext } from "../../Context/WordsContext";
 import GetWordsService from "../../Services/GetWordsService";
 import style from "./table.module.scss";
 
 function Table() {
   const { dataServer, setDataServer, addWord, deleteWord, updateWord } =
-    useContext(MyContext);
+    useContext(WordsContext);
   const [editMode, setEditMode] = useState(false);
   const [editedFields, setEditedFields] = useState({});
   const [hasEmptyField, setHasEmptyField] = useState(false);
@@ -29,9 +29,15 @@ function Table() {
 
   const handleAddWord = async () => {
     try {
-      await addWord(newWord);
-      await fetchDataFromServer();
-
+      const wordNewtoAdd = {
+        english: newWord.english,
+        transcription: newWord.transcription,
+        russian: newWord.russian,
+        tags: newWord.tags,
+        id: newWord.id,
+        tags_json: newWord.tags_json,
+      };
+      await addWord(wordNewtoAdd);
       setNewWord({
         english: "",
         transcription: "",
@@ -40,7 +46,9 @@ function Table() {
         id: "",
         tags_json: "",
       });
-      setEditMode(false);
+      await fetchDataFromServer();
+
+      /*  setEditMode(false); */
 
       console.log("Слово успешно добавлено");
     } catch (error) {
