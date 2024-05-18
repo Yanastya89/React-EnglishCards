@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import style from "./table.module.scss";
+import GetWordsService from "../../Services/GetWordsService";
 import { inject, observer } from "mobx-react";
 
 const Table = inject("wordsStore")(
@@ -27,6 +28,16 @@ const Table = inject("wordsStore")(
     };
 
     const handleAddWord = async () => {
+      if (
+        newWord.english.trim() === "" ||
+        newWord.transcription.trim() === "" ||
+        newWord.russian.trim() === ""
+      ) {
+        console.error(
+          "Пожалуйста, заполните все поля перед добавлением нового слова."
+        );
+        return;
+      }
       try {
         const wordNewtoAdd = {
           english: newWord.english,
@@ -57,17 +68,14 @@ const Table = inject("wordsStore")(
         await deleteWord(id);
         await fetchDataFromServer();
       } catch (error) {
-        console.error(`Failed to delete word with ID ${id}:`, error);
+        console.error(`Ошибка при удалении слова ID ${id}:`, error);
       }
     };
 
     const handleUpdateWord = async (id, updatedFields) => {
       try {
         await updateWord(id, updatedFields);
-        console.log("Слово успешно обновлено");
-      } catch (error) {
-        console.error(`Ошибка при обновлении слова с ID ${id}:`, error);
-      }
+      } catch (error) {}
     };
 
     useEffect(() => {
