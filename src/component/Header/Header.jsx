@@ -12,11 +12,10 @@ function Header() {
         </Link>
       </div>
       <div className={style.nav}>
-        <Link to="/game">Страница с карточками</Link>
+        <p className={style.cardslink}>
+          <Link to="/game">Страница с карточками</Link>
+        </p>
 
-        <div className={style.search}>
-          <img src={Search} alt="Search" />
-        </div>
         <a href="#" className={style.logIn} id="login">
           Log&nbsp;In
         </a>

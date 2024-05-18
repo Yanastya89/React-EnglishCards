@@ -1,9 +1,23 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import babel from '@rollup/plugin-babel';
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  base:"./",
-    "proxy": "<http://itgirlschool.justmakeit.ru>",
- })
+  plugins: [react(),
+    babel({
+      babelHelpers: 'bundled',
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      include: ['src/**/*'],
+      exclude: 'node_modules/**',
+    }),
+  ],
+  base: "./", 
+  server: {
+    proxy: {
+      "/api": {
+        target: "http://itgirlschool.justmakeit.ru",
+        changeOrigin: true
+      }
+    }
+  },
+  })
